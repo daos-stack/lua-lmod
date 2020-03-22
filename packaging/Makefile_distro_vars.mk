@@ -14,6 +14,7 @@ DISTRO_BASE = $(basename UBUNTU_$(VERSION_ID))
 VERSION_ID_STR := $(subst $(DOT),_,$(VERSION_ID))
 endif
 ifeq ($(ID),fedora)
+SPECTOOL    := spectool
 # a Fedora-based mock builder
 # derive the the values of:
 # VERSION_ID (i.e. 7)
