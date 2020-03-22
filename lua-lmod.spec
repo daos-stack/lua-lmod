@@ -21,6 +21,8 @@
 #
 %define ohpc 0
 
+# only defined on SUSE but stub out for rpmlint on Fedora
+%{!?lua_version: %define lua_version 5.3}
 %define lua_lmod_modulesdir %{_datarootdir}/lmod/modulefiles
 %define lua_lmod_admin_modulesdir %{_datarootdir}/lmod/admin/modulefiles
 %define lua_lmod_moduledeps %{_datarootdir}/lmod/moduledeps
@@ -198,7 +200,6 @@ module try-add suse-hpc
 EOF
 
 mkdir -p %{buildroot}/%{_mandir}/man1
-#install -p -m644 docs/build/man/lmod.1 %{buildroot}/%{_mandir}/man1/
 
 %files
 %license License
