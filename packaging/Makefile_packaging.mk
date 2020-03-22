@@ -36,7 +36,7 @@ RPMS              = $(eval RPMS := $(addsuffix .rpm,$(addprefix _topdir/RPMS/x86
 DEB_TOP          := _topdir/BUILD
 DEB_BUILD        := $(DEB_TOP)/$(NAME)-$(DEB_VERS)
 DEB_TARBASE      := $(DEB_TOP)/$(DEB_NAME)_$(DEB_VERS)
-SOURCE           ?= $(eval SOURCE := $(shell set -x; CHROOT_NAME=$(CHROOT_NAME) $(SPECTOOL) -S -l $(SPEC) | sed -e 2,\$$d -e 's/\#.*//' -e 's/.*:  *//'))$(SOURCE)
+SOURCE           ?= $(eval SOURCE := $(shell CHROOT_NAME=$(CHROOT_NAME) $(SPECTOOL) -S -l $(SPEC) | sed -e 2,\$$d -e 's/.*:  *//'))$(SOURCE)
 PATCHES          ?= $(eval PATCHES := $(shell CHROOT_NAME=$(CHROOT_NAME) $(SPECTOOL) -l $(SPEC) | sed -e 1d -e 's/.*:  *//' -e 's/.*\///'))$(PATCHES)
 SOURCES          := $(addprefix _topdir/SOURCES/,$(notdir $(SOURCE)) $(PATCHES))
 ifeq ($(ID_LIKE),debian)
