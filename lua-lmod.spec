@@ -23,7 +23,7 @@
 
 # only defined on SUSE but stub out for rpmlint on Fedora
 %{!?lua_version: %define lua_version 5.3}
-%define lua_lmod_modulesdir %{_datarootdir}/lmod/modulefiles
+%define lua_lmod_modulesdir %{_datarootdir}/lmod/modulefiles:%{_datarootdir}/modules
 %define lua_lmod_admin_modulesdir %{_datarootdir}/lmod/admin/modulefiles
 %define lua_lmod_moduledeps %{_datarootdir}/lmod/moduledeps
 %define lua_path ?.lua;?/?.lua;%{lua_noarchdir}/?.lua;%{lua_noarchdir}/?/init.lua
@@ -217,8 +217,9 @@ mkdir -p %{buildroot}/%{_mandir}/man1
 %doc my_docs/*.txt my_docs/*.pdf my_docs/*.md
 
 %changelog
-* Sat Mar 21 2020 Brian J. Murrell <brian.murrell@intel.com>
+* Mon Jun 22 2020 Brian J. Murrell <brian.murrell@intel.com>
 - Hacked up from upstream to build more simply
+- Added /usr/share/modules to module search path
 
 * Fri Nov 29 2019 Ana Guerrero Lopez <aguerrero@suse.com>
 - Update to version 8.2.5:
